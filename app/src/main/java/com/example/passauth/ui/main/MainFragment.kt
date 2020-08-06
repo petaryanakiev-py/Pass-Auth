@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.passauth.R
 import com.example.passauth.common.BiometricsUtil
 import com.example.passauth.databinding.MainFragmentBinding
+import com.example.passauth.ui.passwords.NewPasswordFragment
 import java.util.concurrent.Executor
 
 
@@ -47,6 +48,13 @@ class MainFragment : Fragment() {
                         "Authentication succeeded!", Toast.LENGTH_SHORT)
                         .show()
                     showPasswordsButtons()
+                    binding.saveNewPasswordButton.setOnClickListener {
+                        val newPasswordFragment = NewPasswordFragment.newInstance()
+                        parentFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.container, newPasswordFragment)
+                            .commitNow()
+                    }
                 }
 
                 override fun onAuthenticationFailed() {
