@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Pass Auth</string>
+    <string name="view_passwords_button_text">View saved passwords</string>
+    <string name="save_new_password_button_text">Save new password</string>
+</resources>
