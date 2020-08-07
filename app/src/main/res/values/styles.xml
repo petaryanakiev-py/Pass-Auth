@@ -11,6 +11,7 @@
 
     <style name="CustomToolBarStyle" parent="@style/Widget.AppCompat.Toolbar">
         <item name="titleTextColor">@color/colorAccent</item>
+        <item name="android:textColorHint">@color/colorAccent</item>
     </style>
 
 </resources>
