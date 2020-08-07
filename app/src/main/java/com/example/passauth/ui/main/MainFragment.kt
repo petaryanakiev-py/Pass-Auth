@@ -12,6 +12,7 @@ import com.example.passauth.R
 import com.example.passauth.common.BiometricsUtil
 import com.example.passauth.databinding.MainFragmentBinding
 import com.example.passauth.ui.passwords.NewPasswordFragment
+import com.example.passauth.ui.passwords.ShowPasswordsFragment
 import java.util.concurrent.Executor
 
 
@@ -53,6 +54,14 @@ class MainFragment : Fragment() {
                         parentFragmentManager
                             .beginTransaction()
                             .replace(R.id.container, newPasswordFragment)
+                            .commitNow()
+                    }
+
+                    binding.viewPasswordsButton.setOnClickListener {
+                        val showPasswordsFragment = ShowPasswordsFragment.newInstance()
+                        parentFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.container, showPasswordsFragment)
                             .commitNow()
                     }
                 }

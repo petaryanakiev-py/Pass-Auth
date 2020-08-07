@@ -23,7 +23,7 @@ class NewPasswordFragment : Fragment() {
         fun newInstance() = NewPasswordFragment()
     }
 
-    private lateinit var viewModel: NewPasswordViewModel
+        private lateinit var viewModel: NewPasswordViewModel
 
     private var _binding: FragmentNewPasswordBinding? = null
     private val binding get() = _binding!!
@@ -66,7 +66,15 @@ class NewPasswordFragment : Fragment() {
             }
 
             if (valid) {
-                viewModel.persistPassword(appName, password)
+                viewModel.setActivity(activity!!)
+                if (viewModel.persistPassword(appName, password)) {
+                    Toast.makeText(context, "Successfully saved your password!", Toast.LENGTH_SHORT).show()
+                    val showPasswordsFragment = ShowPasswordsFragment.newInstance()
+                    parentFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.container, showPasswordsFragment)
+                        .commitNow()
+                }
             }
         }
         return binding.root
