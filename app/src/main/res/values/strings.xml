@@ -2,6 +2,6 @@
     <string name="app_name">Pass Auth</string>
     <string name="view_passwords_button_text">View saved passwords</string>
     <string name="save_new_password_button_text">Save new password</string>
-    <string name="enter_name_of_application">Enter name of app</string>
+    <string name="enter_name_of_application">Enter application name here</string>
     <string name="password_hint">Enter your password here</string>
 </resources>

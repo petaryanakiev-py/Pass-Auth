@@ -35,15 +35,38 @@ class NewPasswordFragment : Fragment() {
         _binding = FragmentNewPasswordBinding.inflate(inflater, container, false)
 
         binding.saveButton.setOnClickListener {
+            var valid: Boolean = false
+
             val appName = binding.inputApplication.text.toString()
             if (appName == "") {
+                valid = false
                 Toast.makeText(context, "Application name is required", Toast.LENGTH_SHORT).show()
                 binding.inputApplication.setHintTextColor(Color.RED)
-                binding.inputApplication.setOnFocusChangeListener { v, hasFocus ->
+                binding.inputApplication.setOnFocusChangeListener { _, hasFocus ->
                     if (hasFocus) {
                         binding.inputApplication.setHintTextColor(getColor(context!!, R.color.colorAccent))
                     }
                 }
+            } else {
+                valid = true
+            }
+
+            val password = binding.inputPassword.text.toString()
+            if (password == "") {
+                valid = false
+                Toast.makeText(context, "Password field is required", Toast.LENGTH_SHORT).show()
+                binding.inputPassword.setHintTextColor(Color.RED)
+                binding.inputPassword.setOnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
+                        binding.inputPassword.setHintTextColor(getColor(context!!, R.color.colorAccent))
+                    }
+                }
+            } else {
+                valid = true
+            }
+
+            if (valid) {
+                viewModel.persistPassword(appName, password)
             }
         }
         return binding.root
